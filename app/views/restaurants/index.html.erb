@@ -1,0 +1,28 @@
+<nav class="navbar navbar-light bg-light p-2">
+  <a class="navbar-brand" href="#">
+    <img src="https://images.unsplash.com/photo-1552729434-12cd1fb0099a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cmVzdGF1cmFudCUyMGljb25lfGVufDB8fDB8fHww" width="50" height="50" class=" align-top center" alt="">
+  </a>
+  <h2 class="form-inline"> Restaurants Index</h2>
+</nav>
+<div class="container">
+ <%= link_to "Add a restaurant", new_restaurant_path, class: "btn btn-dark p-3 my-3" %>
+  <%@restaurants.each do |restaurant|%>
+    <div class="p-3 border my-3">
+      <p><%= restaurant.name %></p>
+      <p> - <%= restaurant.address %> -</p>
+      <p><i class="fa-solid fa-phone"></i>  <%= restaurant.phone_number %> </p>
+      <p><%= restaurant.category.capitalize%> restaurant</p>
+      <%if restaurant.reviews.exists?  %>
+      <p><%= restaurant.average_rating.to_i %> <i class="fa-solid fa-star"></i> </p>
+      <% end %>
+
+
+      <div class="">
+        <%= link_to "See", restaurant_path(restaurant), class: "btn btn-dark" %>
+        <%= link_to " Add Review",  new_restaurant_review_path(restaurant), class: "btn btn-light" %>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>

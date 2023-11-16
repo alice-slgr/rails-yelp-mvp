@@ -1,0 +1,15 @@
+<div class="container d-flex p-2">
+  <div class="p-5 border my-3 card-body">
+        <p class="card-title">Welcome to  <strong><%= @restaurant.name %></strong> !</p>
+        <p class="card-subtitle mb-2 text-muted"><em> Find us in : </em> <strong> <%= @restaurant.address %> </strong>!</p>
+        <p  class="card-text"> <i class="fa-solid fa-phone"></i> <%= @restaurant.phone_number %></p>
+        <p  class="card-text">The best <strong> <%= @restaurant.category.capitalize %> </strong>restaurant of the neighborhood</p>
+        <% @restaurant.reviews.each do |review| %>
+       <p> <em> Reviews: "<%= review.content.capitalize %>"</em> </p>
+       <p><%= review.rating %> STARS </p>
+        <% end %>
+</div>
+<div class="my-5 p-5">
+  <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-dark my-7 p-2" %>
+</div>
+</div>
